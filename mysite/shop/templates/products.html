@@ -1,0 +1,29 @@
+{% if products %}
+  {% for product in products %}
+    <div class="col-md-4 col-sm-6">
+      <div class="product">
+        <div class="image">
+          <a href="shop-detail.html">
+            <img src="{{product.main_image.url}}" alt="" class="img-responsive image1"> </a>
+        </div>
+        <!-- /.image -->
+        <div class="text">
+          <h3>
+            <a href="shop-detail.html">Fur coat with very but very very long name</a>
+          </h3>
+          <p class="price">{{product.Ar}} Ft</p>
+          <p class="buttons">
+            <a href="shop-detail.html" class="btn btn-default">View detail</a>
+            <a href="shop-basket.html" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+          </p>
+        </div>
+        <!-- /.text -->
+      </div>
+      <!-- /.product -->
+    </div>
+
+    <!-- /.col-md-4 -->
+  {% endfor %}
+{% else %}
+  <p>No items are available.</p>
+{% endif %}
