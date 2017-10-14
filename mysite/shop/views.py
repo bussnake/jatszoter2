@@ -28,7 +28,7 @@ def lazy_load_posts(request):
   page = request.POST.get('page')
   products = Product.objects.order_by('-pub_date')[:9] # 
 
-  # use Django’s pagination
+  # use Django's pagination
   # https://docs.djangoproject.com/en/dev/topics/pagination/
   results_per_page = 3 
   paginator = Paginator(products, results_per_page)
