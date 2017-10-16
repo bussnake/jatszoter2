@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^signup/', include('signup.urls')),
+    url(r'^', include('signup.urls')),
     url(r'^polls/', include('polls.urls')),
     url(r'^shop/', include('shop.urls')),
     url(r'^admin/', admin.site.urls),
