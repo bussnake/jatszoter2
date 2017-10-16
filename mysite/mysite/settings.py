@@ -28,6 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '138.68.88.87',
+    'cazokdolaniel.com',
     ]
 
 ##### for DEBUG #############
