@@ -24,11 +24,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'tawkp3sjz3)ogj3fdlza5mysu-x9b2n)bh-73ou40!2+s16pm!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '138.68.88.87',
     'cazokdolaniel.com',
+    'www.cazokdolaniel.com',
+
+    #DEBUG
+    '127.0.0.1'
     ]
 
 ##### for DEBUG #############
@@ -37,6 +41,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Application definition
 
 INSTALLED_APPS = [
+    'shooter.apps.ShooterConfig',
     'shop.apps.ShopConfig',
     'signup.apps.SignupConfig',
     'polls.apps.PollsConfig',
