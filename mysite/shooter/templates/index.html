@@ -13,13 +13,17 @@
 			margin: 0px;
 			background: white;			
 		}
-		canvas {   
-			display : block;
-		   	margin : auto;
-	   }
+		#canvasholder {
+		    width: 99vw;
+		    height: 99vh;
+		    margin: 0 auto;
+		}
 	</style>
 </head>
-<body>
+<body onload="">
+
+	<div id="canvasholder"></div>
+
 	<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
