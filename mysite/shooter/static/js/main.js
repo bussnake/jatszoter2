@@ -13,6 +13,7 @@ function preload() {
     game.load.image('rou', 'static/images/rou.png');
     game.load.image('kaboom', 'static/images/kaboom.png');
     game.load.image("background", 'static/images/background.png' );
+    game.load.image("agi", 'static/images/agi.png' );
 }
 
 var cazok;
@@ -40,7 +41,8 @@ function create() {
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     //game.stage.backgroundColor = '#ffffff';
-    game.add.tileSprite(0, 0, game.world.width, game.world.height, 'background');
+    bg = game.add.tileSprite(0, 0, game.world.width, game.world.height, 'background');
+    bg.visible = false;
 
     bullets = game.add.group();
     bullets.enableBody = true;
@@ -75,7 +77,9 @@ function create() {
 
     cazok.scale.setTo(scaleRatio, scaleRatio);
     
-
+    // Agi 
+    agi = game.add.sprite(0, game.world.height-game.world.height/2.4 , 'agi');
+    agi.visible = false;
 
     game.input.onDown.add(vomitingTexture, this);
     game.input.onUp.add(cazokTexture, this);
@@ -163,6 +167,16 @@ function update() {
     //  Run collision
     game.physics.arcade.overlap(bullets, rous, collisionHandler, null, this);
     game.physics.arcade.overlap(rous, cazok, enemyHitsPlayer, null, this);
+
+    if(score % 100 == 0 && score != 0)
+    {
+        agi.visible = true;
+        game.time.events.add(Phaser.Timer.SECOND * 2, agi_off, this);
+    }
+function agi_off() {
+    agi.visible = false;
+}
+
 }
 
 function collisionHandler (bullet, rou) {
@@ -195,8 +209,9 @@ function enemyHitsPlayer (cazok,bullet) {
     bullets.callAll('kill');
     game.time.events.remove(spawnRous);
 
-    stateText.text=" GAME OVER \n Click to restart";
+    stateText.text=" GAME OVER \n Reload the page to restart";
     stateText.visible = true;
+    bg.visible = true;
 
     //the "click to restart" handler
     game.input.onTap.addOnce(restart,this);
@@ -234,6 +249,7 @@ function restart () {
     //hides the text
     stateText.visible = false;
     addspawner()
+    bg.visible = false;
 
 }
 
