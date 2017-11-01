@@ -45,7 +45,9 @@ function create() {
     shrink = game.add.audio('shrink');
     bgmusic = game.add.audio('bgmusic');
 
-    bgmusic.loopFull();
+    sounds = [ gameover, eat, bonus, shrink, bgmusic ];
+    // start bgmusic when decoded, and ready to use
+    game.sound.setDecodedCallback(sounds, startMusic, this);
     
     //Scale options
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -137,6 +139,10 @@ function update() {
     game.physics.arcade.overlap(dicks2, cazok, cazokDicksCollide, null, this);
     game.physics.arcade.overlap(dicks3, cazok, cazokDicksCollide, null, this);
     game.physics.arcade.overlap(dicks4, cazok, cazokDicksCollide, null, this);
+}
+
+function startMusic(music) {
+    bgmusic.loopFull();
 }
 
 
@@ -241,7 +247,6 @@ function restart () {
  }
 
 function cazokDicksCollide (cazok, dick) {
-    console.log(dick.key);
     if (dick.key == 'dick3' && !bigZac){
         bonus.play();
         bigZac = true;
