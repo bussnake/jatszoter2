@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+	
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+	<title>Cazok vomit shooter</title>
+	<script type="text/javascript" src="{% static 'js/phaser.js' %}"></script>
+
+	<style>
+		body{
+			padding: 10px;
+			margin: 10px;
+			background: white;	
+		}
+
+	   .canvasHolder {
+		    width: 100%;
+		    height: 100%;
+		    display: -ms-grid;
+		    -ms-grid-columns: 1fr;
+		    -ms-grid-rows: 1fr;
+		}
+
+		#canvas {
+		    -ms-grid-column: 1;
+		    -ms-grid-row: 1;
+		    -ms-grid-column-align: center;
+		    -ms-grid-row-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="canvasHolder">
+		<div id="canvas"></div>
+	</div>
+
+
+
+	<script type="text/javascript" src="{% static 'js/bme.js' %}"></script>
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

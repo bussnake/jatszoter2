@@ -41,6 +41,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Application definition
 
 INSTALLED_APPS = [
+    'dicks.apps.DicksConfig',
     'shooter.apps.ShooterConfig',
     'shop.apps.ShopConfig',
     'signup.apps.SignupConfig',
