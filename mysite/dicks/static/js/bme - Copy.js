@@ -1,15 +1,16 @@
+
 //var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, render: render });
 var game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, Phaser.CANVAS, 'canvas', { preload: preload, create: create, update: update});//, update: update, render: render });
 
 function preload() {
 
-    game.load.image('bme', 'static/images/bme_xmas.jpg');
-    game.load.image('cazok', 'static/images/cazok_xmas.png');
+    game.load.image('bme', 'static/images/bme.jpg');
+    game.load.image('cazok', 'static/images/cazok.png');
 
-    game.load.image('dick1', 'static/images/happy_xmas.png');
-    game.load.image('dick2', 'static/images/white_long_xmas.png');
-    game.load.image('dick3', 'static/images/black1_santa.png');
-    game.load.image('dick4', 'static/images/black_long_xmas.png');
+    game.load.image('dick1', 'static/images/happy.png');
+    game.load.image('dick2', 'static/images/white_long.png');
+    game.load.image('dick3', 'static/images/black1.png');
+    game.load.image('dick4', 'static/images/black_long.png');
 
     //sounds
     game.load.audio('gameover', 'static/sounds/gameover.wav');
@@ -93,7 +94,7 @@ function create() {
 
 
     bme = game.add.sprite(game.world.centerX, game.world.centerY, 'bme');
-    bme.scale.setTo(scaleRatio*2, scaleRatio*2);
+    bme.scale.setTo(scaleRatio/2, scaleRatio/2);
     bme.reset(game.width/2, bme.height/2);
     bme.anchor.set(0.5);
 
@@ -128,9 +129,8 @@ function create() {
     stateText.anchor.setTo(0.5, 0.5);
     stateText.visible = false;
 
-    cazok.events.onInputDown.add(timedCorrection, this);
-
 }
+
 function update() {
 
     //  Run collision
@@ -140,17 +140,6 @@ function update() {
     game.physics.arcade.overlap(dicks3, cazok, cazokDicksCollide, null, this);
     game.physics.arcade.overlap(dicks4, cazok, cazokDicksCollide, null, this);
 }
-
-
-function timedCorrection(){
-    game.time.events.add(Phaser.Timer.SECOND/100, correctDisplacement, this);
-}
-
-function correctDisplacement(){
-    cazok.reset(cazok.position.x, game.height - cazok.height);
-}
-
-
 
 function startMusic(music) {
     bgmusic.loopFull();
